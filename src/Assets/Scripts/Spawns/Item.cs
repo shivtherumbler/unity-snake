@@ -7,7 +7,8 @@ namespace Snake
 	{
 		Number,
 		Bonus,
-		Reverse
+		Reverse,
+		Alphabet
 	}
 
 	[RequireComponent (typeof (SpriteRenderer))]

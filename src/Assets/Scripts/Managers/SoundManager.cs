@@ -7,7 +7,7 @@ namespace Snake
 	[RequireComponent (typeof (AudioSource))]
 	public class SoundManager : Singleton <SoundManager> 
 	{
-		private AudioSource m_sfxSource;
+		public AudioSource m_sfxSource;
 		private Dictionary<string, AudioClip> m_sfxDictionary;
 
 		[Header("Sound Effects Collection")]

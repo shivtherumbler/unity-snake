@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace Snake
 	{
 		[Header("In Game UI Components")]
 		[SerializeField] private GameObject m_panelInGame;
-		[SerializeField] private Text m_currentLengthText;
+		[SerializeField] private TextMeshProUGUI m_currentLengthText;
 		[SerializeField] private Text m_previousHighScoreText;
 		[SerializeField] private Text m_currentNumberItemValueText;
 		[SerializeField] private Image m_bonusItemImage;
@@ -104,18 +105,20 @@ namespace Snake
 			{
 				previousLength++;
 
-				m_currentLengthText.text = string.Format ("LENGTH: <color=#20C020FF>{0}</color>", previousLength);
+				m_currentLengthText.text = previousLength.ToString();//string.Format ("SCORE: <color=#20C020FF>{0}</color>", previousLength);
 
 				yield return wait;
 			}
 
-			m_currentLengthText.text = string.Format ("LENGTH: <color=#20C020FF>{0}</color>", Snake.Data.CurrentLength);
-		}
+			m_currentLengthText.text = (Snake.Data.CurrentLength * 100).ToString();//string.Format ("SCORE: <color=#20C020FF>{0}</color>", Snake.Data.CurrentLength * 100);
+
+        }
 
 		private void UpdateHighScoreText ()
 		{
-			m_previousHighScoreText.text = string.Format ("HIGH SCORE: <color=#20C020FF>{0}</color>", Snake.Data.HighScore);
-		}
+			m_previousHighScoreText.text = (Snake.Data.HighScore * 100).ToString();//string.Format ("HIGH SCORE: <color=#20C020FF>{0}</color>", Snake.Data.HighScore * 100);
+
+        }
 
 		private void GameOver ()
 		{
@@ -124,8 +127,8 @@ namespace Snake
 			m_panelInGame.SetActive (false);
 			m_panelGameOver.SetActive (true);
 
-			m_finalLengthText.text = string.Format ("FINAL LENGTH: <color=#FFC000FF>{0}</color>", Snake.Data.CurrentLength);
-			m_newHighScoreText.text = string.Format ("HIGH SCORE: <color=#FFC000FF>{0}</color>", Snake.Data.HighScore);
+			m_finalLengthText.text = string.Format ("FINAL SCORE: <color=#FFC000FF>{0}</color>", Snake.Data.CurrentLength * 100);
+			m_newHighScoreText.text = string.Format ("HIGH SCORE: <color=#FFC000FF>{0}</color>", Snake.Data.HighScore * 100);
 		}
 	}
 }
