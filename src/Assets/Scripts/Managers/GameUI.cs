@@ -63,7 +63,7 @@ namespace Snake
 		{
 			SoundManager.Instance.PlaySoundEffect ("Button Click");
 
-			SceneManager.LoadScene ("Menu");
+			SceneManager.LoadScene ("MainMenu");
 		}
 
 		public void ShowTouchControls ()

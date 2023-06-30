@@ -43,6 +43,8 @@ namespace Snake
 		public Vector2 moveDir;
 		public GameObject gameover;
 		public GameObject[] letters;
+		public AudioSource audioSource;
+		public AudioClip[] audioClip;
 
         //[System.Serializable]
         //public class Replay
@@ -55,6 +57,7 @@ namespace Snake
         private void OnEnable()
         {
 			swipeListener.OnSwipe.AddListener(Swiping);
+			audioSource = GetComponent<AudioSource>();
 			input.Enable();
         }
 
@@ -242,11 +245,12 @@ namespace Snake
 				var item = collider.GetComponent <Item> ();
 
 				ExecuteItemBehaviour (item);
-			}
+                audioSource.PlayOneShot(audioClip[1]);
+            }
 			else 
 			{
 				Stop ();
-
+				audioSource.PlayOneShot(audioClip[0]);
                 //indexchangerate = -1;
                 //isinReplay = true;
                 GameManager.Instance.GameOver ();
